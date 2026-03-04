@@ -8,23 +8,22 @@ nav_order: 2
 It uses [Jekyll](https://jekyllrb.com/) static site generation, [Bootstrap 5](https://getbootstrap.com/), and [Annotorious](https://annotorious.dev/).
 This makes it easy to host on GitHub Pages or anywhere else.
 
-## Workflow
+## Get Started
 
 - Set up your website:
-    - Create a copy of the template.
-    - Add images to the "objects" folder.
-    - Activate GitHub Pages create live site.
+    - Create a copy of the [template](https://github.com/evanwill/image-annotate-template).
+    - Add your images to the "objects" folder.
+    - Activate GitHub Pages to create your live site.
+    - For more detailed instructions see "docs/create-website.md"
 - Annotate images:
     - Visit Annotate page.
-    - Select image and create annotations.
-    - Download annotation data as json.
-    - Add annotation json file to project repository "objects" folder.
+    - Select image and use the interface to create/edit annotations.
+    - Download annotation data as JSON.
+    - Add the annotation JSON file to project repository "objects" folder.
 - Publish annotated images:
     - Create or edit a content page (see "docs/create-website.md" for details).
     - Add `annotation-viewer: true` to the front matter.
     - Use the "annotated-image.html" include to add annotated images to the page. Check the comments in the include for all supported options.
-- Unpublish the "Annotate" page:
-    - If you are done annotating images and don't want the "Annotate" page published, 
 
 ## Guidelines
 
