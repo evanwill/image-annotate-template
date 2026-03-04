@@ -1,5 +1,5 @@
 ---
-title: bootstrap5-template Demo
+title: Image Annotate Demo
 layout: page
 ---
 
