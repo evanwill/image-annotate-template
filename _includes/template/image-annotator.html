@@ -26,10 +26,10 @@ const colors = {
 const annotator_div = document.getElementById("annotator");
 
 // List of images available in the project from "objects" directory
-const project_images = [ {% for i in images %}"{{ i.path }}",{% endfor %} ];
+const project_images = [ {% for i in images %}"{{ i.path | relative_url }}",{% endfor %} ];
 
 // List of existing annotation json files in the project from "objects" directory
-const project_annotations = [ {% for i in annotations %}"{{ i.path }}",{% endfor %} ];
+const project_annotations = [ {% for i in annotations %}"{{ i.path | relative_url }}",{% endfor %} ];
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let anno = null;               // Annotorious instance
