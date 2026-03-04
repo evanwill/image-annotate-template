@@ -10,4 +10,4 @@
 
 {% endcomment %}
 
-<img id="{{ include.image | slugify }}" class="annotated-image" src="{{ '/objects' | relative_url }}/{{ include.image }}" data-annotation-file="{{ '/objects' | relative_url }}/{{ include.annotation }}" />
+<img id="{{ include.image | slugify }}" class="annotated-image rounded img-fluid" src="{{ '/objects' | relative_url }}/{{ include.image }}" data-annotation-file="{{ '/objects' | relative_url }}/{{ include.annotation }}" />

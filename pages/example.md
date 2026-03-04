@@ -2,7 +2,7 @@
 title: Example Page
 nav: Example
 nav_order: 1
-foot: template/annotation-viewer.html
+annotation-viewer: true
 ---
 
 Write content in Markdown.
