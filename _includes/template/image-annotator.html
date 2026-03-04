@@ -11,6 +11,17 @@
   https://annotorious.dev/guides/annotating-images/
 */
 
+// Color options for annotation tagging (Bootstrap theme colors)
+const colors = {
+  primary:   "#0d6efd",
+  secondary: "#6c757d",
+  success:   "#198754",
+  danger:    "#dc3545",
+  warning:   "#ffc107",
+  info:      "#0dcaf0",
+  dark:      "#212529"
+};
+
 // Element in page to add the image and annotator
 const annotator_div = document.getElementById("annotator");
 
@@ -87,6 +98,15 @@ function buildSetupForm() {
 }
 
 function buildAnnotatorLayout() {
+  // Build color swatch buttons
+  const noneBtn = `<button type="button" class="ia-color-swatch btn btn-sm btn-outline-secondary" data-color="" title="None" style="font-size:.7rem;padding:.15rem .45rem;">None</button>`;
+  const colorBtns = Object.entries(colors).map(([name, hex]) =>
+    `<button type="button" class="ia-color-swatch" data-color="${name}"
+     title="${name}" style="width:1.75rem;height:1.75rem;background:${hex};
+     border:none;border-radius:.25rem;cursor:pointer;"></button>`
+  ).join("");
+  const colorSwatchHTML = noneBtn + colorBtns;
+
   annotator_div.innerHTML = `
 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
   <div class="d-flex align-items-center gap-2">
@@ -131,6 +151,12 @@ function buildAnnotatorLayout() {
             <label for="ia-desc" class="form-label form-label-sm fw-semibold">Description</label>
             <textarea id="ia-desc" class="form-control form-control-sm" rows="4"
                       placeholder="Describe this area…"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label form-label-sm fw-semibold">Color tag</label>
+            <div id="ia-color-swatches" class="d-flex flex-wrap gap-1 align-items-center">
+              ${colorSwatchHTML}
+            </div>
           </div>
           <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary btn-sm flex-fill">Save</button>
@@ -271,6 +297,13 @@ function initAnnotorious(loadFrom) {
   document.getElementById("ia-form-cancel").addEventListener("click", cancelForm);
 
   document.getElementById("ia-delete-btn").addEventListener("click", deleteCurrentAnnotation);
+
+  // Color swatch selection
+  document.querySelectorAll(".ia-color-swatch").forEach(btn => {
+    btn.addEventListener("click", function () {
+      selectColorSwatch(this.dataset.color);
+    });
+  });
 }
 
 // ── Form helpers ──────────────────────────────────────────────────────────────
@@ -289,9 +322,11 @@ function showForm(annotation, isNew) {
   const bodies    = annotation.bodies || [];
   const headBody  = bodies.find(b => b.purpose === "heading");
   const descBody  = bodies.find(b => b.purpose === "describing");
+  const tagBody   = bodies.find(b => b.purpose === "tagging");
 
   document.getElementById("ia-heading").value = headBody ? headBody.value : "";
   document.getElementById("ia-desc").value    = descBody ? descBody.value : "";
+  selectColorSwatch(tagBody ? tagBody.value : "");
 
   document.getElementById("ia-form-panel").classList.remove("d-none");
   document.getElementById("ia-heading").focus();
@@ -311,13 +346,17 @@ function submitForm() {
   const existing = anno.getAnnotationById(currentAnnotationId);
   if (!existing) return;
 
+  const colorTag = document.querySelector(".ia-color-swatch[data-selected='true']");
+  const tag = colorTag ? colorTag.dataset.color : "";
+
   // Build updated bodies — preserve any bodies we don't manage
   const otherBodies = (existing.bodies || []).filter(
-    b => b.purpose !== "heading" && b.purpose !== "describing"
+    b => b.purpose !== "heading" && b.purpose !== "describing" && b.purpose !== "tagging"
   );
   const newBodies = [...otherBodies];
   if (heading) newBodies.push({ id: crypto.randomUUID(), purpose: "heading",    value: heading });
   if (desc)    newBodies.push({ id: crypto.randomUUID(), purpose: "describing", value: desc });
+  if (tag)     newBodies.push({ id: crypto.randomUUID(), purpose: "tagging",    value: tag });
 
   anno.updateAnnotation({ ...existing, bodies: newBodies });
   saveToStorage();
@@ -352,6 +391,17 @@ function deleteCurrentAnnotation() {
   hideForm();
 }
 
+// ── Color swatch helper ──────────────────────────────────────────────────────
+
+function selectColorSwatch(colorName) {
+  document.querySelectorAll(".ia-color-swatch").forEach(btn => {
+    const selected = btn.dataset.color === colorName;
+    btn.dataset.selected = selected ? "true" : "false";
+    btn.style.outline       = selected ? "2px solid #000" : "none";
+    btn.style.outlineOffset = selected ? "2px" : "0";
+  });
+}
+
 // ── UI refresh helpers ────────────────────────────────────────────────────────
 
 function refreshBadge() {
@@ -379,15 +429,20 @@ function refreshList() {
     const bodies   = a.bodies || [];
     const headBody = bodies.find(b => b.purpose === "heading");
     const descBody = bodies.find(b => b.purpose === "describing");
+    const tagBody  = bodies.find(b => b.purpose === "tagging");
     const label    = headBody ? esc(headBody.value) : `Annotation ${i + 1}`;
     const snippet  = descBody
       ? `<span class="text-muted">${esc(descBody.value)}</span>`
       : `<span class="text-muted fst-italic">No description</span>`;
+    const colorHex  = tagBody && colors[tagBody.value] ? colors[tagBody.value] : null;
+    const colorDot  = colorHex
+      ? `<span title="${esc(tagBody.value)}" style="display:inline-block;width:.65rem;height:.65rem;background:${colorHex};border-radius:50%;border:1px solid rgba(0,0,0,.2);flex-shrink:0;"></span>`
+      : "";
     return `
 <div class="card ia-list-item" role="button" tabindex="0"
      data-id="${a.id}" style="cursor:pointer;">
   <div class="card-body py-2 px-3">
-    <div class="fw-semibold small">${label}</div>
+    <div class="fw-semibold small d-flex align-items-center gap-1">${colorDot}${label}</div>
     <div class="small text-truncate">${snippet}</div>
   </div>
 </div>`;
