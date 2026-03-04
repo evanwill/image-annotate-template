@@ -23,7 +23,7 @@
 <!-- popover popup for annotations: virtual anchor element positioned at the annotation box -->
 <!-- Bootstrap Popover (which uses bundled Popper.js) is created on this anchor via JS -->
 <span id="av-popover-anchor"
-      style="position:fixed; display:block; width:1px; height:1px; opacity:0; pointer-events:none;"
+      style="position:absolute; display:block; width:1px; height:1px; opacity:0; pointer-events:none;"
       aria-hidden="true"></span>
 <link rel="stylesheet" href="{{ '/assets/lib' | relative_url }}/annotorious.css">
 <script src="{{ '/assets/lib' | relative_url }}/annotorious.js"></script>
@@ -114,13 +114,15 @@ function av_show_popover(annotation, imgEl) {
   const imgRect  = imgEl.getBoundingClientRect();
 
   // Position the anchor at the bottom-center of the annotation box.
+  // Use document-absolute coordinates (getBoundingClientRect + scroll offset) so
+  // the anchor tracks the annotation when the page is scrolled.
   // Popper will flip to "top" automatically if there is no room below.
-  const anchorLeft = rect
+  const anchorLeft = (rect
     ? imgRect.left + rect.x + rect.w / 2
-    : imgRect.left + imgRect.width  / 2;
-  const anchorTop  = rect
+    : imgRect.left + imgRect.width  / 2) + window.scrollX;
+  const anchorTop  = (rect
     ? imgRect.top  + rect.y + rect.h
-    : imgRect.bottom;
+    : imgRect.bottom) + window.scrollY;
 
   av_popover_anchor.style.left = anchorLeft + "px";
   av_popover_anchor.style.top  = anchorTop  + "px";
