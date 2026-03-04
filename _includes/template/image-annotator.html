@@ -288,7 +288,7 @@ function showForm(annotation, isNew) {
   // Populate fields from existing bodies
   const bodies    = annotation.bodies || [];
   const headBody  = bodies.find(b => b.purpose === "heading");
-  const descBody  = bodies.find(b => b.purpose === "commenting");
+  const descBody  = bodies.find(b => b.purpose === "describing");
 
   document.getElementById("ia-heading").value = headBody ? headBody.value : "";
   document.getElementById("ia-desc").value    = descBody ? descBody.value : "";
@@ -313,11 +313,11 @@ function submitForm() {
 
   // Build updated bodies — preserve any bodies we don't manage
   const otherBodies = (existing.bodies || []).filter(
-    b => b.purpose !== "heading" && b.purpose !== "commenting"
+    b => b.purpose !== "heading" && b.purpose !== "describing"
   );
   const newBodies = [...otherBodies];
   if (heading) newBodies.push({ id: crypto.randomUUID(), purpose: "heading",    value: heading });
-  if (desc)    newBodies.push({ id: crypto.randomUUID(), purpose: "commenting", value: desc });
+  if (desc)    newBodies.push({ id: crypto.randomUUID(), purpose: "describing", value: desc });
 
   anno.updateAnnotation({ ...existing, bodies: newBodies });
   saveToStorage();
@@ -378,7 +378,7 @@ function refreshList() {
   list.innerHTML = annotations.map((a, i) => {
     const bodies   = a.bodies || [];
     const headBody = bodies.find(b => b.purpose === "heading");
-    const descBody = bodies.find(b => b.purpose === "commenting");
+    const descBody = bodies.find(b => b.purpose === "describing");
     const label    = headBody ? esc(headBody.value) : `Annotation ${i + 1}`;
     const snippet  = descBody
       ? `<span class="text-muted">${esc(descBody.value)}</span>`

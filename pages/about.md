@@ -22,3 +22,9 @@ This makes it easy to host on GitHub Pages or anywhere else.
 - Publish annotated images:
     - Create or edit a content page (see "docs/create-website.md" for details).
     - Use "annotated-image.html" include to add annotated image to a content page.
+
+## Guidelines
+
+- Supported image types include JPG and PNG. Ensure your file extensions are lowercase, `.jpg`, `.jpeg`, or `.png` only.
+- For ease of use, create meaningful filenames without spaces.
+- Check the comments in "annotated-image.html" include for all supported options.
