@@ -1,0 +1,90 @@
+<!-- modal for annotations to display -->
+<div class="modal fade" id="av-popup" tabindex="-1" aria-labelledby="av-popup-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <div class="modal-header py-2 bg-dark text-white border-0">
+        <h1 class="modal-title h4 mb-0" id="av-popup-label"></h1>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="av-popup-body"></div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="{{ '/assets/lib' | relative_url }}/annotorious.css">
+<script src="{{ '/assets/lib' | relative_url }}/annotorious.js"></script>
+<script>
+/*
+  Image annotation viewer using Annotorious vanilla javascript approach.
+  https://annotorious.dev/guides/annotating-images/
+
+  Finds all <img class="annotated-image"> elements on the page, initialises
+  Annotorious on each in read-only mode, and shows a Bootstrap modal popup
+  with the annotation heading and description when the user clicks a box.
+*/
+
+// display modal with annotation content
+function av_show_popup(annotation) {
+  const bodies  = annotation.bodies || [];
+  const headBody = bodies.find(b => b.purpose === "heading");
+  const descBody = bodies.find(b => b.purpose === "commenting");
+
+  const titleEl = document.getElementById("av-popup-label");
+  const bodyEl  = document.getElementById("av-popup-body");
+
+  titleEl.textContent = headBody ? headBody.value : "Annotation";
+
+  if (descBody && descBody.value) {
+    bodyEl.textContent = "";
+    const p = document.createElement("p");
+    p.className = "mb-0";
+    p.textContent = descBody.value;
+    bodyEl.appendChild(p);
+  } else {
+    bodyEl.innerHTML = '<p class="text-muted fst-italic mb-0">No description.</p>';
+  }
+
+  bootstrap.Modal.getOrCreateInstance(
+    document.getElementById("av-popup")
+  ).show();
+}
+
+// ── Find all annotated images on page ─────────────────────────────────────────
+// Each element is expected to look like:
+// <img id="example-name" class="annotated-image"
+//      src="/objects/example-name.jpg"
+//      data-annotation-file="/objects/example-name-annotations.json" />
+const annotated_images = document.querySelectorAll(".annotated-image");
+
+// ── Initialise Annotorious for each annotated image ───────────────────────────
+annotated_images.forEach(function (img) {
+  const annotationFile = img.dataset.annotationFile;
+  if (!annotationFile) return;
+
+  // Read-only: drawing disabled, clicks only select (not edit)
+  const anno = Annotorious.createImageAnnotator(img, {
+    drawingEnabled: false,
+    userSelectAction: "SELECT"
+  });
+  // set style options
+  anno.setStyle({
+    //fill: '#00ff00',
+    //fillOpacity: 0.25,
+    stroke: '#f1b300',
+    strokeOpacity: 1,
+    strokeWidth: 3
+    });
+
+  // Load the annotation JSON file linked via the data attribute
+  anno.loadAnnotations(annotationFile).catch(function (err) {
+    console.warn("annotation-viewer: could not load", annotationFile, err);
+  });
+
+  // Show popup when user selects an annotation (selectionChanged is more
+  // reliable than clickAnnotation in read-only / SELECT mode)
+  anno.on("selectionChanged", function (annotations) {
+    if (annotations && annotations.length > 0) {
+      av_show_popup(annotations[0]);
+    }
+  });
+});
+</script>
