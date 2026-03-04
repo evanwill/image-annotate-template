@@ -6,7 +6,9 @@
 /* 
     Image annotation interface using Annotorious vanilla javascript approach, https://annotorious.dev/guides/annotating-images/ 
 */
-    
+// element in page to add the image and annotator
+const annotator_div = document.getElementById("annotator");
+
 // list of images available in the project, available to load from "objects" directory
 const project_images = [ {% for i in images %}"{{ i.path }}",{% endfor %} ];
 
