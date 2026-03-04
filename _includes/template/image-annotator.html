@@ -187,6 +187,9 @@ function startAnnotating() {
 
   document.getElementById("ia-back-btn").addEventListener("click", function () {
     if (anno) { anno.destroy(); anno = null; }
+    // Clear stored annotations so a fresh selection on the form always loads
+    // from the chosen file (or starts empty) rather than the stale session data.
+    sessionStorage.removeItem(storageKey());
     buildSetupForm();
   });
 
