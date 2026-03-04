@@ -10,15 +10,4 @@
 
 {% endcomment %}
 
-<img id="{{ include.image | slugify }}" src="{{ '/objects' | relative_url }}/{{ include.image }}" />
-<script>
-    window.onload = function() {
-
-        const annotated_image = document.getElementById("{{ include.image | slugify }}");
-        
-        // initialize Annotorious
-        // load annotations from json file
-        // on annotation click, display popup with header and description text
-    
-    }
-</script>
+<img id="{{ include.image | slugify }}" class="annotated-image" src="{{ '/objects' | relative_url }}/{{ include.image }}" data-annotation-file="{{ '/objects' | relative_url }}/{{ include.annotation }}" />
