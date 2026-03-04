@@ -1,0 +1,122 @@
+[
+  {
+    "id": "9bc8b169-519a-4b78-9e18-cf8607877927",
+    "bodies": [
+      {
+        "id": "a35ac21f-f742-401b-aa1d-bc16e200d93f",
+        "purpose": "heading",
+        "value": "Administration Building",
+        "annotation": "9bc8b169-519a-4b78-9e18-cf8607877927"
+      },
+      {
+        "id": "a1250ac6-5dad-4a7e-8662-233f0b5ae052",
+        "purpose": "commenting",
+        "value": "Built in 1907 in the Collegiate Gothic style, contains administrative offices, auditorium, and classrooms.",
+        "annotation": "9bc8b169-519a-4b78-9e18-cf8607877927"
+      }
+    ],
+    "target": {
+      "annotation": "9bc8b169-519a-4b78-9e18-cf8607877927",
+      "selector": {
+        "type": "RECTANGLE",
+        "geometry": {
+          "bounds": {
+            "minX": 622.3993530273438,
+            "minY": 280.47125244140625,
+            "maxX": 789.6699829101562,
+            "maxY": 346.1477355957031
+          },
+          "x": 622.3993530273438,
+          "y": 280.47125244140625,
+          "w": 167.2706298828125,
+          "h": 65.67648315429688
+        }
+      },
+      "creator": {
+        "isGuest": true,
+        "id": "JzN0aNx0OYx4OIayQ9WG"
+      },
+      "created": "2026-03-04T01:32:35.245Z"
+    }
+  },
+  {
+    "id": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e",
+    "bodies": [
+      {
+        "id": "ca8452d0-c7e2-4b39-b449-8266dd6d1d9d",
+        "purpose": "heading",
+        "value": "University Farms",
+        "annotation": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e"
+      },
+      {
+        "id": "b3b4b870-6d7e-403e-a578-ef8680fb5357",
+        "purpose": "commenting",
+        "value": "Established with the campus in 1889.",
+        "annotation": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e"
+      }
+    ],
+    "target": {
+      "annotation": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e",
+      "selector": {
+        "type": "RECTANGLE",
+        "geometry": {
+          "bounds": {
+            "minX": 1250.171875,
+            "minY": 171.730712890625,
+            "maxX": 1358.118408203125,
+            "maxY": 252.39923095703125
+          },
+          "x": 1250.171875,
+          "y": 171.730712890625,
+          "w": 107.946533203125,
+          "h": 80.66851806640625
+        }
+      },
+      "creator": {
+        "isGuest": true,
+        "id": "JzN0aNx0OYx4OIayQ9WG"
+      },
+      "created": "2026-03-04T01:36:02.100Z"
+    }
+  },
+  {
+    "id": "c537048c-f3a3-4949-814a-e8bcd90116a1",
+    "bodies": [
+      {
+        "id": "004f1839-d552-4074-8d68-c37a0acaa667",
+        "purpose": "heading",
+        "value": "Hello Walk and Steps",
+        "annotation": "c537048c-f3a3-4949-814a-e8bcd90116a1"
+      },
+      {
+        "id": "4548fb0c-bfd5-4318-9d8d-0626589dc14c",
+        "purpose": "commenting",
+        "value": "Established in 1910, famous campus walkway.",
+        "annotation": "c537048c-f3a3-4949-814a-e8bcd90116a1"
+      }
+    ],
+    "target": {
+      "annotation": "c537048c-f3a3-4949-814a-e8bcd90116a1",
+      "selector": {
+        "type": "RECTANGLE",
+        "geometry": {
+          "bounds": {
+            "minX": 782.0179443359375,
+            "minY": 462.5561218261719,
+            "maxX": 849.515625,
+            "maxY": 515.302734375
+          },
+          "x": 782.0179443359375,
+          "y": 462.5561218261719,
+          "w": 67.4976806640625,
+          "h": 52.746612548828125
+        }
+      },
+      "creator": {
+        "isGuest": true,
+        "id": "JzN0aNx0OYx4OIayQ9WG"
+      },
+      "created": "2026-03-04T01:37:21.781Z"
+    }
+  }
+]
