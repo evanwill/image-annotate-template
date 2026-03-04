@@ -6,10 +6,12 @@ annotation-viewer: true
 ---
 
 Write content in Markdown.
-Add annotated images using the include!
+Add annotated images using the "annotated-image.html" include!
 
 ## Annotated Example
 
-`{% raw %}{% include annotated-image.html image="campus02023.jpg" annotation="campus02023-annotations.json" %}{% endraw %}`
+This example uses the "modal" popup option (see the home page for "popover" option).
 
-{% include annotated-image.html image="campus02023.jpg" annotation="campus02023-annotations.json" %}
+`{% raw %}{% include annotated-image.html image="campus02023.jpg" annotation="campus02023-annotations.json" popup="modal" %}{% endraw %}`
+
+{% include annotated-image.html image="campus02023.jpg" annotation="campus02023-annotations.json" popup="modal" %}
