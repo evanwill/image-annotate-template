@@ -13,7 +13,7 @@ It uses Jekyll static site generation, Bootstrap 5, and the Annotorious JS libra
     - Visit Annotate page.
     - Select image and create annotations.
     - Download annotation data as json.
-    - Add annotation json file to project repository "annotations" folder.
+    - Add annotation json file to project repository "objects" folder.
 - Publish annotated images:
     - Create or edit a content page (see "docs/create-website.md" for details).
     - Use "annotated-image.html" include to add annotated image to a content page.

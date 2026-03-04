@@ -1,0 +1,24 @@
+{% comment %}
+
+    Annotated Image include
+    Given an image and annotation JSON file, it load the image with annotations using Annotorious.
+    This allows visitors to view the interactive annotated image on the webpage.
+
+    Options: 
+    - image = the filename of an image contained in the "objects" directory of this project. E.g. "campus02023.jpg"
+    - annotation = the filename of a JSON annotation file contained in the "objects" directory of this project. E.g. "campus-places.json"
+
+{% endcomment %}
+
+<img id="{{ include.image | slugify }}" src="{{ '/objects' | relative_url }}/{{ include.image }}" />
+<script>
+    window.onload = function() {
+
+        const annotated_image = document.getElementById("{{ include.image | slugify }}");
+        
+        // initialize Annotorious
+        // load annotations from json file
+        // on annotation click, display popup with header and description text
+    
+    }
+</script>

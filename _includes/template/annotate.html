@@ -1,0 +1,27 @@
+{% assign images = site.static_files | where_exp: 'f', 'f.path contains "/objects/"' | where_exp: 'f', 'f.extname == ".jpg" or f.extname == ".jpeg" or f.extname == ".png"' %}
+{% assign annotations = site.static_files | where_exp: 'f', 'f.path contains "/objects/" and f.extname == ".json"' %}
+<link rel="stylesheet" href="{{ '/assets/lib' | relative_url }}/annotorious.css">
+<script src="{{ '/assets/lib' | relative_url }}/annotorious.js"></script>
+<script>
+/* 
+    Image annotation interface using Annotorious vanilla javascript approach, https://annotorious.dev/guides/annotating-images/ 
+*/
+    
+// list of images available in the project, available to load from "objects" directory
+const project_images = [ {% for i in images %}"{{ i.path }}",{% endfor %} ];
+
+// list of existing annotation json files in the project, available to load from "objects" directory
+const project_annotations = [ {% for i in annotations %}"{{ i.path }}",{% endfor %} ];
+
+// initial set up form asks user to choose from list of project_images. 
+// if any project_annotations exist, user has option to choose one.
+
+// initialize Annotorious
+// load image
+// load existing annotations json if selected
+// allow adding 'RECTANGLE' annotations
+// when an annotation box is added, provide a form to add a heading and description for the annotation
+// save all annotations in sessionStorage
+// provide a button to export a Annotorious json file following the Annotorious Annotation Data Model
+
+</script>
