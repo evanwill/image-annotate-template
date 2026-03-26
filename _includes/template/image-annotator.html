@@ -152,6 +152,11 @@ function buildAnnotatorLayout() {
             <textarea id="ia-desc" class="form-control form-control-sm" rows="4"
                       placeholder="Describe this area…"></textarea>
           </div>
+          <div class="mb-2">
+            <label for="ia-link" class="form-label form-label-sm fw-semibold">Link <span class="text-muted fw-normal">(optional)</span></label>
+            <input type="url" id="ia-link" class="form-control form-control-sm"
+                   placeholder="https://example.com">
+          </div>
           <div class="mb-3">
             <label class="form-label form-label-sm fw-semibold">Color tag</label>
             <div id="ia-color-swatches" class="d-flex flex-wrap gap-1 align-items-center">
@@ -323,9 +328,11 @@ function showForm(annotation, isNew) {
   const headBody  = bodies.find(b => b.purpose === "heading");
   const descBody  = bodies.find(b => b.purpose === "describing");
   const tagBody   = bodies.find(b => b.purpose === "tagging");
+  const linkBody  = bodies.find(b => b.purpose === "linking");
 
   document.getElementById("ia-heading").value = headBody ? headBody.value : "";
   document.getElementById("ia-desc").value    = descBody ? descBody.value : "";
+  document.getElementById("ia-link").value    = linkBody ? linkBody.value : "";
   selectColorSwatch(tagBody ? tagBody.value : "");
 
   document.getElementById("ia-form-panel").classList.remove("d-none");
@@ -342,6 +349,7 @@ function submitForm() {
 
   const heading = document.getElementById("ia-heading").value.trim();
   const desc    = document.getElementById("ia-desc").value.trim();
+  const link    = document.getElementById("ia-link").value.trim();
 
   const existing = anno.getAnnotationById(currentAnnotationId);
   if (!existing) return;
@@ -351,11 +359,12 @@ function submitForm() {
 
   // Build updated bodies — preserve any bodies we don't manage
   const otherBodies = (existing.bodies || []).filter(
-    b => b.purpose !== "heading" && b.purpose !== "describing" && b.purpose !== "tagging"
+    b => b.purpose !== "heading" && b.purpose !== "describing" && b.purpose !== "tagging" && b.purpose !== "linking"
   );
   const newBodies = [...otherBodies];
   if (heading) newBodies.push({ id: crypto.randomUUID(), purpose: "heading",    value: heading });
   if (desc)    newBodies.push({ id: crypto.randomUUID(), purpose: "describing", value: desc });
+  if (link)    newBodies.push({ id: crypto.randomUUID(), purpose: "linking",    value: link });
   if (tag)     newBodies.push({ id: crypto.randomUUID(), purpose: "tagging",    value: tag });
 
   anno.updateAnnotation({ ...existing, bodies: newBodies });
@@ -430,6 +439,7 @@ function refreshList() {
     const headBody = bodies.find(b => b.purpose === "heading");
     const descBody = bodies.find(b => b.purpose === "describing");
     const tagBody  = bodies.find(b => b.purpose === "tagging");
+    const linkBody = bodies.find(b => b.purpose === "linking");
     const label    = headBody ? esc(headBody.value) : `Annotation ${i + 1}`;
     const snippet  = descBody
       ? `<span class="text-muted">${esc(descBody.value)}</span>`
@@ -438,12 +448,16 @@ function refreshList() {
     const colorDot  = colorHex
       ? `<span title="${esc(tagBody.value)}" style="display:inline-block;width:.65rem;height:.65rem;background:${colorHex};border-radius:50%;border:1px solid rgba(0,0,0,.2);flex-shrink:0;"></span>`
       : "";
+    const linkHtml  = linkBody
+      ? `<div class="small text-truncate"><a href="${esc(linkBody.value)}" target="_blank" rel="noopener noreferrer">${esc(linkBody.value)}</a></div>`
+      : "";
     return `
 <div class="card ia-list-item" role="button" tabindex="0"
      data-id="${a.id}" style="cursor:pointer;">
   <div class="card-body py-2 px-3">
     <div class="fw-semibold small d-flex align-items-center gap-1">${colorDot}${label}</div>
     <div class="small text-truncate">${snippet}</div>
+    ${linkHtml}
   </div>
 </div>`;
   }).join("");

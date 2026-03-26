@@ -1,140 +1,158 @@
 [
   {
-    "id": "9bc8b169-519a-4b78-9e18-cf8607877927",
+    "id": "89c0badd-93b0-456b-9fe0-20f3193e3ab8",
     "bodies": [
       {
-        "id": "817ae501-7645-441b-92b9-3c7990a8a4ce",
+        "id": "350a88c8-9ed0-4469-9663-facd511e7776",
         "purpose": "heading",
         "value": "Administration Building",
-        "annotation": "9bc8b169-519a-4b78-9e18-cf8607877927"
+        "annotation": "89c0badd-93b0-456b-9fe0-20f3193e3ab8"
       },
       {
-        "id": "0037a82c-5a00-4c64-97dd-62fb12daa4d7",
+        "id": "6cda6116-f9ac-4ea4-8644-d6f3df56c6fc",
         "purpose": "describing",
-        "value": "Built in 1907 in the Collegiate Gothic style, contains administrative offices, auditorium, and classrooms.",
-        "annotation": "9bc8b169-519a-4b78-9e18-cf8607877927"
+        "value": "Constructed in 1907 in the Collegiate Gothic style, designed by Boise architect John E. Tourtellotte.",
+        "annotation": "89c0badd-93b0-456b-9fe0-20f3193e3ab8"
       },
       {
-        "id": "7f47fdaf-1be2-4171-bd20-c9827467d29f",
-        "purpose": "tagging",
-        "value": "primary",
-        "annotation": "9bc8b169-519a-4b78-9e18-cf8607877927"
-      }
-    ],
-    "target": {
-      "annotation": "9bc8b169-519a-4b78-9e18-cf8607877927",
-      "selector": {
-        "type": "RECTANGLE",
-        "geometry": {
-          "bounds": {
-            "minX": 622.3993530273438,
-            "minY": 280.47125244140625,
-            "maxX": 789.6699829101562,
-            "maxY": 346.1477355957031
-          },
-          "x": 622.3993530273438,
-          "y": 280.47125244140625,
-          "w": 167.2706298828125,
-          "h": 65.67648315429688
-        }
-      },
-      "creator": {
-        "isGuest": true,
-        "id": "JzN0aNx0OYx4OIayQ9WG"
-      },
-      "created": "2026-03-04T01:32:35.245Z"
-    }
-  },
-  {
-    "id": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e",
-    "bodies": [
-      {
-        "id": "90ad84af-6ec5-4fda-84dc-dd6f9313125a",
-        "purpose": "heading",
-        "value": "University Farms",
-        "annotation": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e"
+        "id": "19e9461f-db24-40a5-afa2-7d14fdc0defb",
+        "purpose": "linking",
+        "value": "https://www.lib.uidaho.edu/digital/campus/buildings/administrationbuildingnew.html",
+        "annotation": "89c0badd-93b0-456b-9fe0-20f3193e3ab8"
       },
       {
-        "id": "17309e4d-16f3-4156-bfea-e1859573554c",
-        "purpose": "describing",
-        "value": "Established with the campus in 1889.",
-        "annotation": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e"
-      },
-      {
-        "id": "e8466023-a81d-48fd-8b15-3b6c9728b9bd",
+        "id": "7fd97ce7-a530-4613-b385-b2f0c4c59381",
         "purpose": "tagging",
         "value": "success",
-        "annotation": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e"
+        "annotation": "89c0badd-93b0-456b-9fe0-20f3193e3ab8"
       }
     ],
     "target": {
-      "annotation": "53ad553f-4bb5-4f65-b3d5-deb0f130b23e",
+      "annotation": "89c0badd-93b0-456b-9fe0-20f3193e3ab8",
       "selector": {
         "type": "RECTANGLE",
         "geometry": {
           "bounds": {
-            "minX": 1250.171875,
-            "minY": 171.730712890625,
-            "maxX": 1358.118408203125,
-            "maxY": 252.39923095703125
+            "minX": 609.897216796875,
+            "minY": 270.9984130859375,
+            "maxX": 803.1381225585938,
+            "maxY": 345.3875732421875
           },
-          "x": 1250.171875,
-          "y": 171.730712890625,
-          "w": 107.946533203125,
-          "h": 80.66851806640625
+          "x": 609.897216796875,
+          "y": 270.9984130859375,
+          "w": 193.24090576171875,
+          "h": 74.38916015625
         }
       },
       "creator": {
         "isGuest": true,
-        "id": "JzN0aNx0OYx4OIayQ9WG"
+        "id": "w1Q4rDuq3Hs3NnwEioDi"
       },
-      "created": "2026-03-04T01:36:02.100Z"
+      "created": "2026-03-26T22:03:52.658Z"
     }
   },
   {
-    "id": "c537048c-f3a3-4949-814a-e8bcd90116a1",
+    "id": "e24f5f21-d1ed-43bc-b980-207a96b794cf",
     "bodies": [
       {
-        "id": "b7825361-7348-4f79-b4b7-8239f1a730e8",
+        "id": "fd6ad0b2-9261-4f75-be7c-b0819d9a339c",
         "purpose": "heading",
-        "value": "Hello Walk and Steps",
-        "annotation": "c537048c-f3a3-4949-814a-e8bcd90116a1"
+        "value": "Life Sciences",
+        "annotation": "e24f5f21-d1ed-43bc-b980-207a96b794cf"
       },
       {
-        "id": "a98e83b1-80fd-4e3d-a50b-df3cb25fdf06",
+        "id": "9f1bc5e3-18b3-4e62-a3a5-2645983ba627",
         "purpose": "describing",
-        "value": "Established in 1910, famous campus walkway.",
-        "annotation": "c537048c-f3a3-4949-814a-e8bcd90116a1"
+        "value": "Built in 1923 in the Collegiate Gothic style by architect Rudolph Weaver.",
+        "annotation": "e24f5f21-d1ed-43bc-b980-207a96b794cf"
       },
       {
-        "id": "8ada93bc-02d8-4972-9d5c-14179863cb1e",
+        "id": "91a63877-de08-4b5a-a532-d0a337d7f866",
+        "purpose": "linking",
+        "value": "https://www.lib.uidaho.edu/digital/campus/buildings/lifesciencessouth.html",
+        "annotation": "e24f5f21-d1ed-43bc-b980-207a96b794cf"
+      },
+      {
+        "id": "ba9c8b67-b1d3-46e9-80ad-5745b7c467f1",
         "purpose": "tagging",
-        "value": "info",
-        "annotation": "c537048c-f3a3-4949-814a-e8bcd90116a1"
+        "value": "primary",
+        "annotation": "e24f5f21-d1ed-43bc-b980-207a96b794cf"
       }
     ],
     "target": {
-      "annotation": "c537048c-f3a3-4949-814a-e8bcd90116a1",
+      "annotation": "e24f5f21-d1ed-43bc-b980-207a96b794cf",
       "selector": {
         "type": "RECTANGLE",
         "geometry": {
           "bounds": {
-            "minX": 782.0179443359375,
-            "minY": 462.5561218261719,
-            "maxX": 849.515625,
-            "maxY": 515.302734375
+            "minX": 981.1010131835938,
+            "minY": 354.87115478515625,
+            "maxX": 1073.1741943359375,
+            "maxY": 427.6883850097656
           },
-          "x": 782.0179443359375,
-          "y": 462.5561218261719,
-          "w": 67.4976806640625,
-          "h": 52.746612548828125
+          "x": 981.1010131835938,
+          "y": 354.87115478515625,
+          "w": 92.07318115234375,
+          "h": 72.81723022460938
         }
       },
       "creator": {
         "isGuest": true,
-        "id": "JzN0aNx0OYx4OIayQ9WG"
+        "id": "w1Q4rDuq3Hs3NnwEioDi"
       },
-      "created": "2026-03-04T01:37:21.781Z"
+      "created": "2026-03-26T22:07:09.703Z"
+    }
+  },
+  {
+    "id": "1dc4a84e-b9d0-4ffb-8b34-af47d016d1d7",
+    "bodies": [
+      {
+        "id": "128308db-8297-4c37-91f1-1a5628fbfa9c",
+        "purpose": "heading",
+        "value": "Memorial Gymnasium",
+        "annotation": "1dc4a84e-b9d0-4ffb-8b34-af47d016d1d7"
+      },
+      {
+        "id": "4cdb994a-4a8d-4ee2-82f6-bf51d0a29f05",
+        "purpose": "describing",
+        "value": "Built in 1929 to honor all Idahoans who lost their lives in World War I, designed by architect and University of Idaho faculty member David C. Lange.",
+        "annotation": "1dc4a84e-b9d0-4ffb-8b34-af47d016d1d7"
+      },
+      {
+        "id": "65dc6ff5-7771-4b0f-8be2-6aa57fdd4e23",
+        "purpose": "linking",
+        "value": "https://www.lib.uidaho.edu/digital/campus/buildings/memorialgymnasium.html",
+        "annotation": "1dc4a84e-b9d0-4ffb-8b34-af47d016d1d7"
+      },
+      {
+        "id": "566d545b-e6f5-4386-a054-5d206ede4fd2",
+        "purpose": "tagging",
+        "value": "info",
+        "annotation": "1dc4a84e-b9d0-4ffb-8b34-af47d016d1d7"
+      }
+    ],
+    "target": {
+      "annotation": "1dc4a84e-b9d0-4ffb-8b34-af47d016d1d7",
+      "selector": {
+        "type": "RECTANGLE",
+        "geometry": {
+          "bounds": {
+            "minX": 961.47216796875,
+            "minY": 226.95281982421875,
+            "maxX": 1035.1676025390625,
+            "maxY": 276.259521484375
+          },
+          "x": 961.47216796875,
+          "y": 226.95281982421875,
+          "w": 73.6954345703125,
+          "h": 49.30670166015625
+        }
+      },
+      "creator": {
+        "isGuest": true,
+        "id": "w1Q4rDuq3Hs3NnwEioDi"
+      },
+      "created": "2026-03-26T22:07:58.889Z"
     }
   }
 ]
